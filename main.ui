@@ -32,6 +32,33 @@
     </item>
    </layout>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1126</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Меню</string>
+    </property>
+    <addaction name="add_action"/>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <action name="actionddf">
+   <property name="text">
+    <string>ddf</string>
+   </property>
+  </action>
+  <action name="add_action">
+   <property name="text">
+    <string>Добавить кофе</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
