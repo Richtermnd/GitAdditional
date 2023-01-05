@@ -1,16 +1,17 @@
 import sqlite3
 import sys
 
-from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication, QWidget, QFormLayout, QDialogButtonBox
+from PyQt5.QtWidgets import QApplication, QFormLayout
 from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem, QDialog
-from PyQt5 import QtCore, QtGui, QtWidgets
+
+from ui.main import Ui_MainWindow
+from ui.addEditCoffeeForm import Ui_Dialog
 
 
-class Form(QDialog):
+class Form(QDialog, Ui_Dialog):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        uic.loadUi('addEditCoffeeForm.ui', self)
+        self.setupUi(self)
         self.accepted.connect(self.return_data)
 
     def get_data(self):
@@ -31,11 +32,11 @@ class Form(QDialog):
         self.parentWidget().add_coffee(res)
 
 
-class MainWindow(QMainWindow):
+class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('main.ui', self)
-        self.con = sqlite3.connect('coffee.sqlite')
+        self.setupUi(self)
+        self.con = sqlite3.connect('data/coffee.sqlite')
         self.add_action.triggered.connect(self.show_form)
         self.loadTable()
 
